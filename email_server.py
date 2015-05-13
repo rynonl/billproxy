@@ -11,6 +11,6 @@ class CustomSMTPServer(smtpd.SMTPServer):
     print 'Message               :', data
     return
 
-server = CustomSMTPServer(('127.0.0.1', 25), None)
+server = CustomSMTPServer(('0.0.0.0', 25), None)
 
 asyncore.loop()
