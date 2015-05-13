@@ -1,5 +1,6 @@
-import smtpd
 import asyncore
+import email
+import smtpd
 
 class CustomSMTPServer(smtpd.SMTPServer):
       
@@ -8,7 +9,10 @@ class CustomSMTPServer(smtpd.SMTPServer):
     print 'Message addressed from:', mailfrom
     print 'Message addressed to  :', rcpttos
     print 'Message length        :', len(data)
-    print 'Message               :', data
+    
+    parsed = email.message_from_string(data)
+    print parsed
+
     return
 
 server = CustomSMTPServer(('0.0.0.0', 25), None)
