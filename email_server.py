@@ -8,6 +8,7 @@ class CustomSMTPServer(smtpd.SMTPServer):
     print 'Message addressed from:', mailfrom
     print 'Message addressed to  :', rcpttos
     print 'Message length        :', len(data)
+    print 'Message               :', data
     return
 
 server = CustomSMTPServer(('127.0.0.1', 25), None)
